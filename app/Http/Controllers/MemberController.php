@@ -5,21 +5,28 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\members;
 use App\Models\trainers;
-use App\Models\memberships;
+use App\Models\subscription;
 
 use Carbon\Carbon;
 
 class MemberController extends Controller
 {
     public function welcome(){
-        $memberships = memberships::all();
+        $subscription = subscription::all();
         $trainers = trainers::all();
 
         return view('welcome')
         ->with('members', members::all())
         ->with('trainers', trainers::all())
-        ->with('memberships', memberships::all());
+        ->with('subscription', subscription::all());
     }
+
+    public function editpage(){
+        return view('editpage')->with('trainers', trainers::all())->with('subscription', subscription::all());
+    }
+    
+
+
 
     public function store(Request $request){
       

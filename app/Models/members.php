@@ -23,8 +23,8 @@ class members extends Model
         return $this->belongsTo(trainers::class);
     }
 
-    public function membership()
+    public function subscription()
     {
-        return $this->belongsTo(memberships::class);
+        return $this->belongsTo(subscription::class);
     }
 }

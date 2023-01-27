@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('email');
             $table->date('membership_expiration');
             $table->unsignedBigInteger('trainer_id')->references('id')->on('trainers')->onDelete('cascade');
-            $table->unsignedBigInteger('membership_id')->references('id')->on('memberships')->onDelete('cascade');
+            $table->unsignedBigInteger('membership_id')->references('id')->on('subscription')->onDelete('cascade');
             $table->timestamps();
         });
     }

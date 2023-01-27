@@ -169,7 +169,7 @@
                             <th>{{ $member->membership_expiration }}</th>
                             <th>{{ $member->trainer_id}}</th>
 
-                            <td> <a href="" class="btn-tertiary fs-5 p-0 m-0">🖊</a>
+                            <td> <a href="{{ route('editpage', $member->id) }}" class="btn-tertiary fs-5 p-0 m-0">🖊</a>
                                 {{-- <a href="" class="btn btn-sm" data-bs-toggle="modal"
                                     data-bs-target="#staticBackdrop">🖊</a> --}}
                                 <a href="{{ route('delete', $member->id) }}"
@@ -209,7 +209,7 @@
                             <td>{{ $trainer->email }}</td>
                             <th>{{ $trainer->specialization }}</th>
                             <th>{{ $trainer->phone }}</th>
-                            <td> <a href="" class="btn-tertiary fs-5 p-0 m-0">🖊</a>
+                            <td> <a href="{{ route('editpage', $trainer->id) }}" class="btn-tertiary fs-5 p-0 m-0">🖊</a>
                                 {{-- <a href="" class="btn btn-sm" data-bs-toggle="modal"
                                     data-bs-target="#staticBackdrop">🖊</a> --}}
                                 <a href="{{ route('delete', $trainer->id) }}"

@@ -40,7 +40,7 @@ class DatabaseSeeder extends Seeder
         }
 
         for($j = 0; $j < 10; $j++){
-            \App\Models\memberships::create([
+            \App\Models\subscription::create([
                 'membership_type' => fake()->word,
                 'membership_price' => fake()->randomDigit*37.73+359
             ]);

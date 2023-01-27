@@ -17,9 +17,13 @@ use App\Http\Controllers\MemberController;
 //     return view('welcome');
 // });
 
+Route::get('/editpage/{id}', function($id){
+
+    return view('editpage')->with;
+});
 
 Route::get('/', [MemberController::class, 'welcome'])->name('welcome');
 Route::post('/createmember', [MemberController::class,'store'])->name('createmember');
 Route::post('/createtrainer', [MemberController::class,'storeTrainer'])->name('createtrainer');
 Route::get('/delete/{id}', [MemberController::class,'delete'])->name('delete');
-Route::get('/edit/{id}', [MemberController::class,'edit'])->name('edit');
+Route::get('/editpage/{id}', [MemberController::class,'editpage'])->name('editpage');
