@@ -19,6 +19,7 @@ use App\Http\Controllers\MemberController;
 
 
 Route::get('/', [MemberController::class, 'welcome'])->name('welcome');
-Route::post('/create', [MemberController::class,'store'])->name('create');
+Route::post('/createmember', [MemberController::class,'store'])->name('createmember');
+Route::post('/createtrainer', [MemberController::class,'storeTrainer'])->name('createtrainer');
 Route::get('/delete/{id}', [MemberController::class,'delete'])->name('delete');
 Route::get('/edit/{id}', [MemberController::class,'edit'])->name('edit');
