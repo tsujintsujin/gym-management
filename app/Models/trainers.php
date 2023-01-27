@@ -16,4 +16,9 @@ class trainers extends Model
     'specialization',
     'phone',
     ];
+
+    public function member()
+    {
+        return $this->hasMany(members::class);
+    }
 }

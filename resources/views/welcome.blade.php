@@ -167,7 +167,7 @@
                             <td>{{ $member->name }}</td>
                             <td>{{ $member->email }}</td>
                             <th>{{ $member->membership_expiration }}</th>
-                            <th>{{ $member->trainer_id }}</th>
+                            <th>{{ $member->trainer_id}}</th>
 
                             <td> <a href="" class="btn-tertiary fs-5 p-0 m-0">🖊</a>
                                 {{-- <a href="" class="btn btn-sm" data-bs-toggle="modal"

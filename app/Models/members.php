@@ -15,15 +15,16 @@ class members extends Model
     'email',
     'membership_expiration',
     'trainer_id',
+    'membership_id',
     ];
 
-    public function trainers()
+    public function trainer()
     {
         return $this->belongsTo(trainers::class);
     }
 
-    public function memberships()
+    public function membership()
     {
-        return $this->hasMany(memberships::class);
+        return $this->belongsTo(memberships::class);
     }
 }

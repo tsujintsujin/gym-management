@@ -12,6 +12,9 @@ use Carbon\Carbon;
 class MemberController extends Controller
 {
     public function welcome(){
+        $memberships = memberships::all();
+        $trainers = trainers::all();
+
         return view('welcome')
         ->with('members', members::all())
         ->with('trainers', trainers::all())
