@@ -21,21 +21,23 @@
     <div class="row shadow m-5 p-5 ">
         <h1 class="mb-5 text-center">🏋 Gym 🏋</h1>
         <hr>
- 
-        <h4>Update Form</h4>
+
+        <h4>Member Form</h4>
 
         <!-- Tabs content -->
         <div class="tab-pane fade show active" id="ex1-tabs-1" role="tabpanel" aria-labelledby="ex1-tab-1">
-            <form method="POST" action="{{ route('createmember') }}" class="form-control border-0 mt-3 px-0">
+            <form method="POST" action="{{ route('editmember', $members->id) }}"
+                class="form-control border-0 mt-3 px-0">
                 @csrf
                 <div class="row d-flex gx-0">
 
                     <div class="col m-1">
-                        <input class="form-control" type="text" placeholder="Name" name="name" required>
+                        <input class="form-control" type="text" placeholder="{{ $members->name }}" name="name"
+                            value="{{ $members->name }}" required>
                     </div>
-
                     <div class="col m-1">
-                        <input class="form-control" type="text" placeholder="Email" name="email" required>
+                        <input class="form-control" type="text" placeholder="{{ $members->email }}" name="email"
+                            value="{{ $members->email }}" required>
                     </div>
                     <div class="row p-0 mt-3">
                         <div class="col-2">
@@ -43,8 +45,8 @@
                             <select id="trainer_id" name="trainer_id" class="col-4 m-1 form-select">
                                 <ul class="dropdown-menu">
                                     @if ($trainers->count() > 0)
-                                    @foreach ($trainers as $trainer)
-                                    <option value="{{ $trainer->id }}"">{{ $trainer->name }}</option>
+                                        @foreach ($trainers as $trainer)
+                                            <option value="{{ $trainer->id }}"">{{ $trainer->name }}</option>
                                         @endforeach
                                     @else
                                         <option selected>No Trainers</option>
@@ -52,15 +54,14 @@
                                 </ul>
                             </select>
                         </div>
-                        <div class="col-2">
+                        <div class=" col-2">
                             <label for=" membership_id">Membership</label>
-                                        <select id="membership_id" name="membership_id"
-                                            class="col-4 m-1 form-select">
-                                            <ul class="dropdown-menu">
-                                                @if ($memberships->count() > 0)
-                                                @foreach ($memberships as $membership)
-                                                <option value="{{ $membership->id }}"">
-                                                {{ $membership->membership_type }}</option>
+                            <select id="membership_id" name="membership_id" class="col-4 m-1 form-select">
+                                <ul class="dropdown-menu">
+                                    @if ($subscription->count() > 0)
+                                        @foreach ($subscription as $subscrip)
+                                            <option value="{{ $subscrip->id }}"">
+                                                {{ $subscrip->membership_type }}</option>
                                         @endforeach
                                     @else
                                         <option selected>No Memberships</option>
@@ -70,12 +71,11 @@
                         </div>
                     </div>
                     <div class=" col-1 m-1 mt-4">
-                                                    <button class="form-control btn btn btn-secondary"
-                                                        type="submit" required>✔</button>
-                        </div>
+                        <button class="form-control btn btn btn-secondary" type="submit" required>✔</button>
                     </div>
+                </div>
             </form>
-    </div>
+        </div>
 
 
 

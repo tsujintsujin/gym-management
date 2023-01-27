@@ -21,8 +21,11 @@ class MemberController extends Controller
         ->with('subscription', subscription::all());
     }
 
-    public function editpage(){
-        return view('editpage')->with('trainers', trainers::all())->with('subscription', subscription::all());
+    public function editpage($id){
+        return view('editpage')
+        ->with('members', members::find($id))
+        ->with('trainers', trainers::all())
+        ->with('subscription', subscription::all());
     }
     
 
@@ -52,6 +55,28 @@ class MemberController extends Controller
         $trainer->save();        
         return redirect()->route('welcome')->with('Success', 'Trainer has been added!');
     }
+
+    public function createsubscription(Request $request){
+        $subscription = new subscription;
+        $subscription->membership_type = $request->membership_type;
+        $subscription->membership_price = $request->membership_price;
+
+        $subscription->save();        
+        return redirect()->route('welcome')->with('Success', 'New Subscription Category has been added!');
+    }
+
+
+    public function editmember(Request $request, $id){
+        $member = members::find($id);
+        $member->name = $request->name;
+        $member->email = $request->email;
+        $member->trainer_id = $request-> trainer_id;
+        $member->membership_id = $request-> membership_id;
+        $member->update();        
+        return redirect()->route('welcome')->with('Success', 'Member successfully edited!');
+    }
+
+
 
 
     public function delete($id){

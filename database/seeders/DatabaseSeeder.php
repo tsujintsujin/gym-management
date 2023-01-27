@@ -16,34 +16,6 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
     
-        for($i = 0; $i < 10; $i++){
-            $fakename = fake()->firstName;
-            \App\Models\members::create([
-                'name' => $fakename,
-                'email' => $fakename."@gmail.com",
-                'membership_expiration' => fake()->date,
-                'trainer_id' => fake()->randomDigit,
-                'membership_id' => fake()->randomDigit,
-
-            ]);
-        }
-
-        for($j = 0; $j < 10; $j++){
-            $fakename = fake()->firstName;
-            \App\Models\trainers::create([
-               
-                'name' => $fakename,
-                'email' => $fakename."@gmail.com",
-                'specialization' => fake()->word,
-                'phone' => fake()->phoneNumber  ,
-            ]);
-        }
-
-        for($j = 0; $j < 10; $j++){
-            \App\Models\subscription::create([
-                'membership_type' => fake()->word,
-                'membership_price' => fake()->randomDigit*37.73+359
-            ]);
-        }
+       
     }
 }

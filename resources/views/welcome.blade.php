@@ -32,12 +32,15 @@
             <!-- Tabs navs -->
             <ul class="nav nav-tabs mb-3" id="ex1" role="tablist">
                 <li class="nav-item" role="presentation">
-                    <a class="nav-link active" id="ex1-tab-1" data-mdb-toggle="tab" href="#ex1-tabs-1" role="tab"
-                        aria-controls="ex1-tabs-1" aria-selected="true">Member</a>
+                    <a class="nav-link active" id="ex1-tab-1" data-mdb-toggle="tab" href="#ex1-tabs-1"
+                        role="tab">Member</a>
                 </li>
                 <li class="nav-item" role="presentation">
-                    <a class="nav-link" id="ex1-tab-2" data-mdb-toggle="tab" href="#ex1-tabs-2" role="tab"
-                        aria-controls="ex1-tabs-2" aria-selected="false">Trainer</a>
+                    <a class="nav-link" id="ex1-tab-2" data-mdb-toggle="tab" href="#ex1-tabs-2" role="tab">Trainer</a>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <a class="nav-link" id="ex1-tab-3" data-mdb-toggle="tab" href="#ex1-tabs-3"
+                        role="tab">Membership</a>
                 </li>
             </ul>
             <!-- Tabs navs -->
@@ -71,15 +74,15 @@
                                         </ul>
                                     </select>
                                 </div>
-                                <div class="col-2">
-                                    <label for=" membership_id">Membership</label>
+                                <div class=" col-2">
+                                                <label for=" membership_id">Membership</label>
                                                 <select id="membership_id" name="membership_id"
                                                     class="col-4 m-1 form-select">
                                                     <ul class="dropdown-menu">
-                                                        @if ($memberships->count() > 0)
-                                                        @foreach ($memberships as $membership)
-                                                        <option value="{{ $membership->id }}"">
-                                                        {{ $membership->membership_type }}</option>
+                                                        @if ($subscription->count() > 0)
+                                                        @foreach ($subscription as $subscrip)
+                                                        <option value="{{ $subscrip->id }}"">
+                                                        {{ $subscrip->membership_type }}</option>
                                                 @endforeach
                                             @else
                                                 <option selected>No Memberships</option>
@@ -113,6 +116,25 @@
                             </div>
                             <div class="col m-1">
                                 <input class="form-control" type="text" placeholder="Phone" name="phone" required>
+                            </div>
+                            <div class="col-1 m-1">
+                                <button class="form-control btn btn btn-secondary" type="submit" required>✔</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="tab-pane fade" id="ex1-tabs-3" role="tabpanel">
+                    <form method="POST" action="{{ route('createsubscription') }}" class="form-control border-0 mt-3 px-0">
+                        @csrf
+                        <div class="row d-flex gx-0 text-center">
+
+                            <div class="col m-1">
+                                <input class="form-control" type="text" placeholder="Type" name="membership_type"
+                                    required>
+                            </div>
+                            <div class="col m-1">
+                                <input class="form-control" type="text" placeholder="Price" name="membership_price"
+                                    required>
                             </div>
                             <div class="col-1 m-1">
                                 <button class="form-control btn btn btn-secondary" type="submit" required>✔</button>
@@ -167,7 +189,7 @@
                             <td>{{ $member->name }}</td>
                             <td>{{ $member->email }}</td>
                             <th>{{ $member->membership_expiration }}</th>
-                            <th>{{ $member->trainer_id}}</th>
+                            <th>{{ $member->trainer->name}}</th>
 
                             <td> <a href="{{ route('editpage', $member->id) }}" class="btn-tertiary fs-5 p-0 m-0">🖊</a>
                                 {{-- <a href="" class="btn btn-sm" data-bs-toggle="modal"
@@ -209,11 +231,13 @@
                             <td>{{ $trainer->email }}</td>
                             <th>{{ $trainer->specialization }}</th>
                             <th>{{ $trainer->phone }}</th>
-                            <td> <a href="{{ route('editpage', $trainer->id) }}" class="btn-tertiary fs-5 p-0 m-0">🖊</a>
+                            <td> 
+                                {{-- <a href="{{ route('editpage', $trainer->id) }}"
+                                    class="btn-tertiary fs-5 p-0 m-0">🖊</a> --}}
                                 {{-- <a href="" class="btn btn-sm" data-bs-toggle="modal"
                                     data-bs-target="#staticBackdrop">🖊</a> --}}
                                 <a href="{{ route('delete', $trainer->id) }}"
-                                    class="btn-tertiary fs-5 p-0 m-0 ms-5">❌</a>
+                                    class="btn-tertiary fs-5 p-0 m-0">❌</a>
                             </td>
                         </tbody>
                         @endforeach

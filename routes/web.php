@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MemberController;
+
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -17,13 +19,17 @@ use App\Http\Controllers\MemberController;
 //     return view('welcome');
 // });
 
-Route::get('/editpage/{id}', function($id){
-
-    return view('editpage')->with;
-});
+// Route::get('/editmember/{id}', function($id){
+//     $members = members::find($id);
+//     return view('editpage')->with();
+// });
 
 Route::get('/', [MemberController::class, 'welcome'])->name('welcome');
 Route::post('/createmember', [MemberController::class,'store'])->name('createmember');
 Route::post('/createtrainer', [MemberController::class,'storeTrainer'])->name('createtrainer');
+Route::post('/createsubscription', [MemberController::class,'createsubscription'])->name('createsubscription');
+
+
 Route::get('/delete/{id}', [MemberController::class,'delete'])->name('delete');
 Route::get('/editpage/{id}', [MemberController::class,'editpage'])->name('editpage');
+Route::post('/editmember/{id}', [MemberController::class,'editmember'])->name('editmember');
