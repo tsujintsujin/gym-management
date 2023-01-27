@@ -12,18 +12,17 @@
 </head>
 
 <body class="container">
-   
-    <div class="row shadow m-5 p-5 " >
+
+    <div class="row shadow m-5 p-5 ">
         <h1 class="mb-5">🏋 Gym Membership Registration</h1>
         <hr>
-        <button class="btn btn-primary col-3 ms-1" type="button" data-mdb-toggle="collapse" data-mdb-target="#collapseContent">
+        <button class="btn btn-primary col-3 ms-1" type="button" data-mdb-toggle="collapse"
+            data-mdb-target="#collapseRegistration">
             Register Member
         </button>
-        <button class="btn btn-primary col-3 ms-1" type="button" data-mdb-toggle="collapse" data-mdb-target="#collapseContent">
-            View Members
-        </button>
-        
-        <form method="POST" action="" class="form-control border-0 mt-3 collapse px-0" id="collapseContent">
+       
+
+        <form method="POST" action="{{route('create')}}" class="form-control border-0 mt-3 collapse px-0" id="collapseRegistration">
             @csrf
             <div class="row d-flex gx-0 text-center">
 
@@ -35,23 +34,31 @@
                     <input class="form-control" type="text" placeholder="Email" name="email" required>
                 </div>
 
-                <div class="col m-1">
-                    <input class="form-control" type="text" placeholder="Membership Type" name="membershiptype"
-                        required>
-                </div>
-
                 <div class="col-1 m-1">
                     <button class="form-control btn btn btn-secondary" type="submit" required>✔</button>
                 </div>
             </div>
         </form>
 
+        <div>
+            <table class="table">
+                <thead>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Expiration</th>
+                    <th>Actions</th>
+                </thead>
+                <tbody>
+                    <td>Name</td>
+                    <td>Email</td>
+                    <th>Expiration</th>
+                    <td> <a href="" class="btn-tertiary fs-5 p-0 m-0">🖊</a>
+                        {{-- <a href="" class="btn btn-sm" data-bs-toggle="modal" data-bs-target="#staticBackdrop">🖊</a> --}}
+                        <a href="" class="btn-tertiary fs-5 p-0 m-0 ms-5">❌</a></td>
+                </tbody>
+        </div>
 
-
-        
     </div>
-
-
 
 
 

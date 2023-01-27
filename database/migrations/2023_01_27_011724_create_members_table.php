@@ -17,7 +17,6 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('email');
-            $table->string('membership_type');
             $table->date('membership_expiration');
             $table->integer('trainer_id')->constrained('Trainer')->onDelete('cascade');
             $table->integer('membership_id')->constrained('Membership')->onDelete('cascade');
